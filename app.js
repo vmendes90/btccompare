@@ -133,7 +133,7 @@ const run = async () => {               //mais usual usar wait do que then
         res.render('home', {bitcoinPrice2: bitcoinPrice.bitcoin, cheap: bitcoinPrice.lowest.price , expensive:bitcoinPrice.highest.price,
          marketCheap : bitcoinPrice.lowest.market , marketExpensive: bitcoinPrice.highest.market, bitcoinPrice } );
     })
-    console.log(bitcoinPrice);
+
 };
 
 
@@ -145,5 +145,5 @@ run();
 }) */
 
 app.listen(port, function () {
-    console.log('running on port 3000');
+    console.log('running on port '+port);
 })
