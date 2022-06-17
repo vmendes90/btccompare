@@ -29,6 +29,10 @@ hr {
     background-clip: content-box, padding-box;
 }
 
+.bg-container {
+    background-color: rgb(219, 226, 239);
+}
+
 .fa-bitcoin {
 
     font-size: 3rem;
