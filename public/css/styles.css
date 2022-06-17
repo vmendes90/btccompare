@@ -1,3 +1,8 @@
+/*font-family: 'Roboto', sans-serif;*/
+body , footer {
+    font-family: 'Roboto', sans-serif !important;
+
+}
 hr {
     color:rgb(63, 114, 175)
 }
@@ -15,6 +20,9 @@ hr {
 }
 
 /*home.ejs*/
+.varFromEjs {
+    font-weight: 900;
+}
 .body {
     padding: 30px 15% 30px 15%;
     background-image: linear-gradient(to bottom, rgb(63, 114, 175) 0%, rgb(63, 114, 175) 100%), linear-gradient(to bottom, rgb(63, 114, 175) 0%, rgb(63, 114, 175) 100%);

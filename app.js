@@ -2,7 +2,8 @@
 const express = require('express');
 const app = express();
 app.use(express.static("public"));
-
+//port
+const port = process.env.PORT || 3000;
 //coingeck API
 const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
@@ -143,6 +144,6 @@ run();
    console.log(result) // "bitcoin price" - pesquisei promise pending e encontrei isto e funciona , embora agora não seja comum usar then
 }) */
 
-app.listen('3000', function () {
+app.listen(port, function () {
     console.log('running on port 3000');
 })
