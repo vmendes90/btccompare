@@ -1,0 +1,50 @@
+hr {
+    color:rgb(63, 114, 175)
+}
+
+/*header*/
+.navbar {
+    background-color: rgb(219, 226, 239);
+}
+
+
+.nav-item,
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+/*home.ejs*/
+.body {
+    padding: 30px 15% 30px 15%;
+    background-image: linear-gradient(to bottom, rgb(63, 114, 175) 0%, rgb(63, 114, 175) 100%), linear-gradient(to bottom, rgb(63, 114, 175) 0%, rgb(63, 114, 175) 100%);
+    background-clip: content-box, padding-box;
+}
+
+.fa-bitcoin {
+
+    font-size: 3rem;
+    display: inline-block;
+}
+.welcomeDiv {
+    padding-top: 16px;
+}
+.welcomeP {
+    display: inline-block;
+}
+
+/*footer*/
+.btn-footer {
+    margin-left: 20px;
+}
+.cta{
+background-color: rgb(63, 114, 175);
+}
+.copy {
+background-color: rgb(17, 45, 78);
+}
+
+.section {
+    margin: 0 15% 0 15%;
+
+}

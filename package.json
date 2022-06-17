@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "coingecko-api": "^1.0.10",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  },
+  "name": "ccompare",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "VMENDES",
+  "license": "ISC",
+  "description": "Compare crypto prices across differente exchangers"
+}

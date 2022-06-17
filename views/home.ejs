@@ -1,0 +1,47 @@
+<%- include('partials/header'); %>
+    <div class="body ">
+        <div class="container">
+            <div class="row ">
+                <div class="col-12 welcomeDiv text-center ">
+                    <p><i class="fa-brands fa-bitcoin  "></i></p>
+                </div>
+                <div class="col-12 welcomeDiv text-left ">
+                    <h4> Get information about what exchanger to use in order to get the best deal. Thinking about
+                        buying? Check where the price is lower. Need to sell? Learn where you can get the best price for
+                        your precious Bitcoin!
+                    </h4>
+                </div>
+            </div>
+            <hr class="border-2 opacity-50">
+            <div class="row text-left">
+                <div class="col-12 ">
+                    <h2>The average Bitcoin price is:
+                        <%= bitcoinPrice2.toLocaleString('us-US')%> $
+                    </h2>
+                </div>
+            </div>
+            <hr class="border-2 opacity-50">
+            <div class="row text-left">
+                <div class="col-12 ">
+                    <h2>The exchanger/pair with the lowest Bitcoin price is on <%= marketCheap %> in BTC/
+                            <%=bitcoinPrice.lowest.target%> pair at
+                                <%= bitcoinPrice.lowest.price.toLocaleString('us-US')%> $
+                    </h2>
+                </div>
+            </div>
+            <hr class="border-2 opacity-50">
+            <div class="row text-left">
+                <div class="col-12 ">
+                    <h2>The exchanger/pair with the highest Bitcoin price is on <%= marketExpensive %> in BTC/
+                            <%=bitcoinPrice.highest.target%> pair at
+                                <%= expensive.toLocaleString('us-US')%> $
+                    </h2>
+                </div>
+            </div>
+            <hr class="border-2 opacity-50">
+        </div>
+    </div>
+
+
+
+    <%- include('partials/footer'); %>
