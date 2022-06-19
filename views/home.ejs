@@ -16,31 +16,65 @@
             <div class="row text-left">
                 <div class="col-12 ">
                     <h2>The average Bitcoin price is:
-                        <span class="varFromEjs"><%= bitcoinPrice2.toLocaleString('us-US')%> $</span>
+                        <span class="varFromEjs">
+                            <%= bitcoinPrice2.toLocaleString('us-US')%> $
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <hr class="border-2 opacity-50">
+            <div class="row text-left">
+                <div class="col-12">
+                    <h2>The exchanger/pair with the lowest Bitcoin price is on <span class="varFromEjs">
+                            <%= marketCheap %>
+                        </span> in BTC/
+                        <span class="varFromEjs">
+                            <%=bitcoinPrice.lowest.target%>
+                        </span>pair at
+                        <span class="varFromEjs">
+                            <%= bitcoinPrice.lowest.price.toLocaleString('us-US')%> $
+                        </span>
                     </h2>
                 </div>
             </div>
             <hr class="border-2 opacity-50">
             <div class="row text-left">
                 <div class="col-12 ">
-                    <h2>The exchanger/pair with the lowest Bitcoin price is on <span class="varFromEjs"><%= marketCheap %></span> in BTC/
-                           <span class="varFromEjs"> <%=bitcoinPrice.lowest.target%> </span>pair at
-                           <span class="varFromEjs">  <%= bitcoinPrice.lowest.price.toLocaleString('us-US')%> $</span>
+                    <h2>The exchanger/pair with the highest Bitcoin price is on <span class="varFromEjs">
+                            <%= marketExpensive %>
+                        </span> in BTC/
+                        <span class="varFromEjs">
+                            <%=bitcoinPrice.highest.target%>
+                        </span> pair at
+                        <span class="varFromEjs">
+                            <%= expensive.toLocaleString('us-US')%> $
+                        </span>
                     </h2>
                 </div>
             </div>
             <hr class="border-2 opacity-50">
-            <div class="row text-left">
+            <div class="row text-center">
                 <div class="col-12 ">
-                    <h2>The exchanger/pair with the highest Bitcoin price is on <span class="varFromEjs"><%= marketExpensive %></span> in BTC/
-                        <span class="varFromEjs"> <%=bitcoinPrice.highest.target%></span> pair at
-                            <span class="varFromEjs"><%= expensive.toLocaleString('us-US')%> $</span>
-                    </h2>
+                    <form action="/" method="post">
+                        <p>Get the most recent information by pressing the button (you can make one request each 30 seconds) </p>
+                        <button class="btn btn-rounded btn-primary" type="submit" id="teste" disabled>Refresh
+                            Information</button>
+                    </form>
                 </div>
             </div>
-
         </div>
     </div>
+
+    <script>
+    function buttonTime() {
+    setTimeout(function(){
+        document.getElementById("teste").disabled = false;
+    console.log(document.getElementById("teste").disabled);
+    }, 30000);}
+    buttonTime();
+    </script>
+
+
 
 
 

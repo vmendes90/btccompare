@@ -16,13 +16,14 @@ const myConsole = new console.Console(fs.createWriteStream('./output.txt')); //p
 //body parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
+let lastTime = new Date();
+let data;
 
 
-var comparePrices = async () => { // Queria fazer para uma lista de X moedas, mas após conseguir tirar os id's que queria, não consegui associar com o respetivo preço
+let comparePrices = async () => { // Queria fazer para uma lista de X moedas, mas após conseguir tirar os id's que queria, não consegui associar com o respetivo preço
 
 
     let bitcoinPrice = await CoinGeckoClient.simple.price({ ids: ["bitcoin"] }); // preço simples da bitcoin , só para testar, nao retorna nada daqui
-    console.log(bitcoinPrice.data.bitcoin.usd);
     //let exchangerList = await CoinGeckoClient.exchanges.list(); //usei para ir buscar os ID dos exchangers
     //exchangerList.data.forEach(item => myConsole.log(item))  //exchange ID pretendido: binance, gdax (coinbase), bitstamp, kraken , poloniex , ftx_spot .. depois ver outros
 
@@ -122,23 +123,71 @@ var comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
 
     console.log(listaIds)
  */
-
+    console.log(dadosFinais);
+    console.log("---------------")
+    dados = dadosFinais;
     return dadosFinais;
 
 };
 
-const run = async () => {               //mais usual usar wait do que then
-    let bitcoinPrice = await comparePrices();
-    app.get('/', function (req, res) {
+// const run = async () => {               //mais usual usar wait do que then
+//     let bitcoinPrice = await comparePrices();
+//     console.log(bitcoinPrice);
+//     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+//     app.get('/', function (req, res) {
+//         console.log(bitcoinPrice);
+//         console.log("*******************************************")
+//         res.render('home', {bitcoinPrice2: bitcoinPrice.bitcoin, cheap: bitcoinPrice.lowest.price , expensive:bitcoinPrice.highest.price,
+//          marketCheap : bitcoinPrice.lowest.market , marketExpensive: bitcoinPrice.highest.market, bitcoinPrice } );
+//     })
+// };
+
+
+    app.get('/', async (req, res) => {
+        let bitcoinPrice;
+        let now = new Date();
+        if(now > lastTime.setSeconds(30))
+        {
+            bitcoinPrice = await comparePrices();
+            lastTime = new Date();
+            data = bitcoinPrice;
+        }
+        else {
+            bitcoinPrice = data;
+        }
+        console.log(bitcoinPrice);
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    
+        console.log(bitcoinPrice);
+        console.log("*******************************************")
         res.render('home', {bitcoinPrice2: bitcoinPrice.bitcoin, cheap: bitcoinPrice.lowest.price , expensive:bitcoinPrice.highest.price,
          marketCheap : bitcoinPrice.lowest.market , marketExpensive: bitcoinPrice.highest.market, bitcoinPrice } );
     })
 
-};
 
 
+app.post('/', function (req,res) {
+   
+/*     function timeFunction1() {
+            (){
+            comparePrices();
+                    }, 50);} */
 
-run();
+/*     function timeFunction2() {
+        setTimeout(function(){
+            run(); 
+            }, 1000);
+    } */
+
+
+/*     timeFunction1(); */
+res.redirect('/');
+
+});
+ 
+// run();
+
 
 /*  bitcoinPrice.then(function(result) {
    console.log(result) // "bitcoin price" - pesquisei promise pending e encontrei isto e funciona , embora agora não seja comum usar then
