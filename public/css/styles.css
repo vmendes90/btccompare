@@ -20,6 +20,14 @@ hr {
 }
 
 /*home.ejs*/
+
+.weight300 {
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.padding16px {
+    padding-bottom: 16px;
+}
 .varFromEjs {
     font-weight: 900;
 }
@@ -41,9 +49,7 @@ hr {
 .welcomeDiv {
     padding-top: 16px;
 }
-.welcomeP {
-    display: inline-block;
-}
+
 
 /*footer*/
 .btn-footer {

@@ -55,8 +55,10 @@
             <hr class="border-2 opacity-50">
             <div class="row text-center">
                 <div class="col-12 ">
-                    <form action="/" method="post">
-                        <p>Get the most recent information by pressing the button (you can make one request each 30 seconds) </p>
+
+                    <form class ="padding16px"action="/" method="post">
+                        <p class="weight300">Get the most recent information by pressing the button after the countdown</p>
+                        <div class ="weight300"id="countdown"></div>
                         <button class="btn btn-rounded btn-primary" type="submit" id="teste" disabled>Refresh
                             Information</button>
                     </form>
@@ -71,6 +73,19 @@
         document.getElementById("teste").disabled = false;
     console.log(document.getElementById("teste").disabled);
     }, 30000);}
+
+    var timeleft = 30;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Finished";
+  } else {
+    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+  }
+  timeleft -= 1;
+}, 1000)
+
+
     buttonTime();
     </script>
 
