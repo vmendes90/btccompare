@@ -17,7 +17,7 @@ const myConsole = new console.Console(fs.createWriteStream('./output.txt')); //p
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 let lastTime = new Date();
-let data;
+let dados;
 
 
 let comparePrices = async () => { // Queria fazer para uma lista de X moedas, mas após conseguir tirar os id's que queria, não consegui associar com o respetivo preço
@@ -123,9 +123,7 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
 
     console.log(listaIds)
  */
-    console.log(dadosFinais);
-    console.log("---------------")
-    dados = dadosFinais;
+
     return dadosFinais;
 
 };
@@ -145,8 +143,11 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
 
 
     app.get('/', async (req, res) => {
-        let bitcoinPrice;
+        
         let now = new Date();
+        console.log(now);   
+        console.log(lastTime)
+        console.log(lastTime.setSeconds(30));
         bitcoinPrice = await comparePrices();
 /*         if(now > lastTime.setSeconds(30))
         {
@@ -157,8 +158,6 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
         else {
             bitcoinPrice = data;
         } */
-        console.log(bitcoinPrice);
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         res.render('home', {bitcoinPrice2: bitcoinPrice.bitcoin, cheap: bitcoinPrice.lowest.price , expensive:bitcoinPrice.highest.price,
          marketCheap : bitcoinPrice.lowest.market , marketExpensive: bitcoinPrice.highest.market, bitcoinPrice } );
     })
@@ -167,26 +166,11 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
 
 app.post('/', function (req,res) {
    
-/*     function timeFunction1() {
-            (){
-            comparePrices();
-                    }, 50);} */
-
-/*     function timeFunction2() {
-        setTimeout(function(){
-            run(); 
-            }, 1000);
-    } */
-
-
-/*     timeFunction1(); */
 res.redirect('/');
 
 });
  
-// run();
-
-
+ 
 /*  bitcoinPrice.then(function(result) {
    console.log(result) // "bitcoin price" - pesquisei promise pending e encontrei isto e funciona , embora agora não seja comum usar then
 }) */
