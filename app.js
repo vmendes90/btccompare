@@ -147,6 +147,7 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
     app.get('/', async (req, res) => {
         let bitcoinPrice;
         let now = new Date();
+        bitcoinPrice = await comparePrices();
 /*         if(now > lastTime.setSeconds(30))
         {
             bitcoinPrice = await comparePrices();
