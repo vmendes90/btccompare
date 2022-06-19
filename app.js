@@ -147,7 +147,7 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
     app.get('/', async (req, res) => {
         let bitcoinPrice;
         let now = new Date();
-        if(now > lastTime.setSeconds(30))
+/*         if(now > lastTime.setSeconds(30))
         {
             bitcoinPrice = await comparePrices();
             lastTime = new Date();
@@ -155,12 +155,9 @@ let comparePrices = async () => { // Queria fazer para uma lista de X moedas, ma
         }
         else {
             bitcoinPrice = data;
-        }
+        } */
         console.log(bitcoinPrice);
         console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    
-        console.log(bitcoinPrice);
-        console.log("*******************************************")
         res.render('home', {bitcoinPrice2: bitcoinPrice.bitcoin, cheap: bitcoinPrice.lowest.price , expensive:bitcoinPrice.highest.price,
          marketCheap : bitcoinPrice.lowest.market , marketExpensive: bitcoinPrice.highest.market, bitcoinPrice } );
     })
